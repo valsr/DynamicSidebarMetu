@@ -1,0 +1,6 @@
+{
+    "@metadata": {
+        "authors": ["Radoslav Georgiev"]
+    },
+    "dynamicsidebarmenu-desc": "Provides dynamic sidebars menu that lists all pages in the given namespace"
+}

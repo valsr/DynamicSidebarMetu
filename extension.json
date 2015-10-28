@@ -1,0 +1,41 @@
+{
+	"name": "DynamicSidebarMenu",
+	"version": "1.0",
+	"author": "Radoslav Georgiev",
+	"url": "https://www.mediawiki.org/wiki/Extension:DynamicSidebarMenu",
+	"descriptionmsg": "dynamicsidebarmenu-desc",
+	"type": "other",
+	"callback": "DynamicSidebarMenu::onRegistration",
+	"config": {
+		"dsmDebug": false
+	},
+	"AutoloadClasses": {
+		"DynamicSidebarMenu": "DynamicSidebarMenu_body.php"
+	},
+	"MessagesDirs": {
+		"DynamicSidebarMenu": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"SkinBuildSidebar": [
+			"DynamicSidebarMenu::createMenu"
+		]
+	},
+	"ResourceModules": {
+		"ext.fancytree": {
+			"scripts": [
+				"jquery.fancytree.js",
+				"jquery.fancytree.persist.js",
+				"jquery.fancytree.mediawiki.js",
+				"fancytree.js"
+			],
+			"dependencies": [
+				"jquery.ui.core",
+				"jquery.ui.widget",
+				"jquery.effects.blind",
+				"jquery.cookie"
+			]
+		}
+	}
+}
