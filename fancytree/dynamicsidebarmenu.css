@@ -1,0 +1,35 @@
+/* 
+ * Hide the ul list to prevent flickering
+ */
+#DynamicSidebarMenuData
+{
+	display: none;	
+}
+
+/*
+ * Unindent the menu (note selecting the id based on how mediawiki labels them, might brake in the future)
+ */
+#p-DynamicSidebarMenu .body
+{
+	margin-left: 0 !important;
+}
+
+/*
+ * Proper indentation of the menu
+ */
+#DynamicSidebarMenu
+{
+	margin-left:-1.5em;
+}
+#DynamicSidebarMenu ul li
+{
+	margin-left: 1.5em !important;	
+}
+
+/*
+ * Reset font size
+ */
+#DynamicSidebarMenu ul li
+{
+	font-size: 1em !important;	
+}

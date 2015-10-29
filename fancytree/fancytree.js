@@ -6,14 +6,27 @@ $(document).ready(function()
 
 	$('#DynamicSidebarMenu').fancytree
 	({
-		activate: function(event, data)
+		clickFolderMode:2,
+		click: function(event, data)
 		{
-        		var node = data.node;
-		        // Use <a> href and target attributes to load the content:
-	        	if( node.data.href )
-	        	{
-				window.open(node.data.href, "_self");
-	        	}
+        	var node = data.node;
+			
+			if (node.hasChildren() && event.toElement.nodeName != "A")
+			{
+				node.toggleExpanded();
+				return false;
+			}
+		},
+		createNode: function(event, data)
+		{
+			if(data.node.hasChildren())
+			{
+				$(data.node.span).append("<span class=\"fancytree-title fancy-tree-link\">[<a href=\""+data.node.data.href+"\">Open</a>]</span>");
+			}
+			else
+			{
+				$(data.node.span).find(".fancytree-title").replaceWith("<span class=\"fancytree-title fancy-tree-link\"><a href=\""+data.node.data.href+"\">"+data.node.title+"</a></span>");
+			}
 		}
 	});
 });

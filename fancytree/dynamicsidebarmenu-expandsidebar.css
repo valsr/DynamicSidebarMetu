@@ -1,0 +1,12 @@
+/* 
+ * Expand the side bar by 5em
+ */
+#mw-panel
+{
+	width: 15em !important
+}
+
+#content, #footer, #left-navigation
+{
+		margin-left:16em !important;
+}

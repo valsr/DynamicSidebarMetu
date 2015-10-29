@@ -10,7 +10,7 @@
 		"dsmDebug": false
 	},
 	"AutoloadClasses": {
-		"DynamicSidebarMenu": "DynamicSidebarMenu_body.php"
+		"DynamicSidebarMenu": "DynamicSidebarMenu.php"
 	},
 	"MessagesDirs": {
 		"DynamicSidebarMenu": [
