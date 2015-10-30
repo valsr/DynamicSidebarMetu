@@ -1,7 +1,7 @@
 /* 
  * Hide the ul list to prevent flickering
  */
-#DynamicSidebarMenuData
+#DSMData
 {
 	display: none;	
 }
@@ -17,11 +17,11 @@
 /*
  * Proper indentation of the menu
  */
-#DynamicSidebarMenu
+#DSM
 {
 	margin-left:-1.5em;
 }
-#DynamicSidebarMenu ul li
+#DSM ul li
 {
 	margin-left: 1.5em !important;	
 }
@@ -29,7 +29,12 @@
 /*
  * Reset font size
  */
-#DynamicSidebarMenu ul li
+#DSM ul li
 {
 	font-size: 1em !important;	
+}
+
+#DSM li > span.DSMRed > span.fancytree-title
+{
+	color: #a55858;
 }

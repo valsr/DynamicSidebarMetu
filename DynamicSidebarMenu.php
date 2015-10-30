@@ -29,7 +29,7 @@ class DynamicSidebarMenu
 
 		$text = $menu->render();
 
-		$bar["DynamicSidebarMenu"]="<div id=\"DynamicSidebarMenu\">$text</div>";
+		$bar["DynamicSidebarMenu"]="<div id=\"DSM\">$text</div>";
 		return true;
 	}
 	/**
@@ -49,7 +49,7 @@ class DynamicSidebarMenu
 
 		// This gets the remote path even if it's a symlink (MW1.25+)
 		$path = str_replace( "$IP/extensions", '', __DIR__ );
-		$path = str_replace( "$IP\\extensions", '', __DIR__ ); // Windows uses forward slash
+		$path = str_replace( "$IP\\extensions", '', $path ); // Windows uses forward slash
 
 		// Fancytree script and styles
 		$wgResourceModules['ext.fancytree']['localBasePath'] = __DIR__ . '/fancytree';
@@ -148,6 +148,7 @@ class DynamicSidebarMenu
 	{
 		$menuList = array(); // list in Namespace:Path/to/Title (string)
 		$menu = array();
+		$existingTitles = array(); // array of existing titles
 		
 		// creates a list of all the menu levels we need making sure all items can be connected
 		self::log("Sorting array");
@@ -155,6 +156,7 @@ class DynamicSidebarMenu
 		self::log("Creating menu structure");
 		foreach( $titles as $title )
 		{
+			$existingTitles[] = $title->getFullText();
 			$levels = explode('/', $title->getFullText());
 			$titlePath="";
 			
@@ -171,7 +173,7 @@ class DynamicSidebarMenu
 		self::log("Creating menu");
 		$prevLevel = 0;
 		$level = 0;
-		$out = '<ul id="DynamicSidebarMenuData">';
+		$out = '<ul id="DSMData">';
 		foreach( $menuList as $menuTitle )
 		{
 			self::log("Processing: $menuTitle");
@@ -186,7 +188,10 @@ class DynamicSidebarMenu
 				$out .= '<ul>';
 			}
 			
-			$out .= '<li>'.$this->createItemLink(Title::newFromText($menuTitle)); // closing is done by the next item
+			if(!in_array($menuTitle, $existingTitles))
+				$out .= '<li class="DSMRed">'.$this->createItemLink(Title::newFromText($menuTitle));
+			else
+				$out .= '<li>'.$this->createItemLink(Title::newFromText($menuTitle)); // closing is done by the next item
 			
 			$prevLevel = $level;
 		}

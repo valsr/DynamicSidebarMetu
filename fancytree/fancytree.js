@@ -4,7 +4,7 @@
 $(document).ready(function()
 {
 
-	$('#DynamicSidebarMenu').fancytree
+	$('#DSM').fancytree
 	({
 		clickFolderMode:2,
 		click: function(event, data)
@@ -21,7 +21,12 @@ $(document).ready(function()
 		{
 			if(data.node.hasChildren())
 			{
-				$(data.node.span).append("<span class=\"fancytree-title fancy-tree-link\">[<a href=\""+data.node.data.href+"\">Open</a>]</span>");
+				var span = $(data.node.span);
+				
+				if(span.hasClass("DSMRed"))
+					$(data.node.span).append("<span class=\"fancy-tree-link\">[<a href=\""+data.node.data.href+"?action=edit\">Create</a>]</span>");
+				else
+					$(data.node.span).append("<span class=\"fancy-tree-link\">[<a href=\""+data.node.data.href+"\">Open</a>]</span>");
 			}
 			else
 			{
