@@ -49,6 +49,7 @@ class DynamicSidebarMenu
 
 		// This gets the remote path even if it's a symlink (MW1.25+)
 		$path = str_replace( "$IP/extensions", '', __DIR__ );
+		$path = str_replace( "$IP\\extensions", '', __DIR__ ); // Windows uses forward slash
 
 		// Fancytree script and styles
 		$wgResourceModules['ext.fancytree']['localBasePath'] = __DIR__ . '/fancytree';
